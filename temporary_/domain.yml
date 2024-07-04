@@ -1,0 +1,144 @@
+version: '2.0'
+intents:
+- affirm
+- ask_detail
+- ask_menu
+- ask_menu_category
+- ask_menu_type
+- deny
+- greet
+- inform
+- inform_color
+- inform_size
+- inform_type
+- nlu_fallback
+- order_received
+- request_restaurant
+- slots_values
+- submit
+- ask_coffee
+- request_coffee_menu
+- request_roti_menu
+- confirm_order
+
+entities:
+- color
+- size
+- type
+- menu_type
+- menu_category
+- cuisine
+- num_people
+- outdoor_seating
+slots:
+  type:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: type
+      conditions:
+      - active_loop: order_form
+  size:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: size
+      conditions:
+      - active_loop: order_form
+  color:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: color
+      conditions:
+      - active_loop: order_form  
+  confirm:
+    type: text
+    mappings:
+    - type: from_intent
+      intent: affirm
+      value: "yes"
+    - type: from_intent
+      intent: deny
+      value: "no"
+      
+      
+  menu_type:
+    type: text
+  menu_category:
+    type: text
+  cuisine:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: cuisine
+  outdoor_seating:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: outdoor_seating
+  num_people:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: num_people
+responses:
+  utter_greet:
+  - text: Halo apa yang bisa saya bantu ?
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_ask_menu_type:
+  - text: 'Silahkan pilih tipe menu yang anda inginkan : 1. Makanan, 2. Minuman.'
+  utter_ask_menu_category:
+  - text: Berikut menu makanan dan minuman yang dapat anda pilih?
+  utter_ask_cuisine:
+  - text: What cuisine?
+  utter_ask_num_people:
+  - text: ok {cuisine}, How many peoplex?
+  utter_ask_outdoor_seating:
+  - text: ok {cuisine}, Do you want to sit outside?
+  utter_submit:
+  - text: All done!
+  utter_slots_values:
+  - text: |-
+      I am going to run a restaurant search using the following parameters:
+       - cuisine: {cuisine}
+       - num_people: {num_people}
+       - outdoor_seating: {outdoor_seating}
+       
+  - text: "Halo apa yang bisa saya bantu?"
+  utter_ask_type:
+  - text: What type of product would you like to order? Please specify.
+  utter_ask_size:
+  - text: What size do you need? Please specify.
+  utter_ask_color:
+  - text: What color would you like? Please specify.  
+  utter_ask_confirm:
+    - text: "Do you want to confirm your order for {type} in size {size} and color {color}?"
+  utter_order_received:
+  - text: Your order for {type} in size {size} and color {color} has been received. Thank you!
+forms:
+  restaurant_form:
+    required_slots:
+    - cuisine
+    - outdoor_seating
+    - num_people
+  order_form:
+    required_slots:
+    - type
+    - size
+    - color
+    - confirm
+    
+actions:
+- utter_order_received
+- utter_ask_type
+- action_get_coffee_menu
+- action_get_roti_menu
+- action_submit_order_form
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

@@ -1,0 +1,5 @@
+flow:
+  hello_world:
+    description: A simple flow that greets the user
+    steps:
+      - action: utter_greet

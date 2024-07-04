@@ -1,0 +1,158 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+- intent: request_coffee_menu
+  examples: |
+    - saya mau pesan kopi
+    - sepertinya hari ini minum kopi enak
+    - kopi enak    
+- intent: request_roti_menu
+  examples: |
+    - saya mau pesan roti
+    - sepertinya hari ini makan roti enak
+    - roti ingin makan roti    
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: affirm
+  examples: |
+    - yes
+    - ya
+    - iya
+    - iye
+    - yep
+    - y
+    - ok
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+- intent: deny
+  examples: |
+    - batal
+    - no
+    - cancel
+    - tdk
+    - tidak
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+- intent: ask_menu_type
+  examples: |
+    - saya ingin makanan
+    - saya ingin minuman
+    - saya haus
+    - saya lapar
+- intent: ask_menu_category
+  examples: |
+    - daftar menu makanan
+    - daftar menu minuman
+    - oke berikan saya daftar menu makanan
+    - oke berikan saya daftar menu minuman
+- intent: request_restaurant
+  examples: |
+    - im looking for a restaurant
+    - can i get [swedish](cuisine) food in any area
+    - a restaurant that serves [caribbean](cuisine) food
+    - id like a restaurant
+    - im looking for a restaurant that serves [mediterranean](cuisine) food
+    - can i find a restaurant that serves [chinese](cuisine)
+- intent: inform
+  examples: |
+    - [afghan](cuisine) food
+    - how bout [asian oriental](cuisine)
+    - what about [indian](cuisine) food
+    - uh how about [turkish](cuisine) type of food
+    - um [english](cuisine)
+    - im looking for [tuscan](cuisine) food
+    - id like [moroccan](cuisine) food
+    - for ten people
+    - 2 people
+    - for three people
+    - just one person
+    - book for seven people
+    - 2 please
+    - nine people
+- intent: inform_type
+  examples: |
+    - I'd like a [shirt](type)
+    - I want buy [jeans](type)
+    - i want buy [jeans](type)
+- intent: inform_size
+  examples: |
+    - I need a size [small](size)
+    - [Medium](size), please.
+    - Maybe i fit in [Large](size)
+    - i want [medium]{"entity": "size", "value": "Medium"}
+- intent: inform_color
+  examples: |
+    - [Blue](color).
+    - [Red](color), please.
+    - [Black](color) is fine.
+- intent: nlu_fallback
+  examples: |
+    - [red]{"entity": "color", "value": "Red"} maybe
